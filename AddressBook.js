@@ -203,9 +203,9 @@ function viewByState(state){
 
 function operations(){
     let choice = 1;
-    while(choice != 9){
+    while(choice != 11){
         console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Search by city\n6.Search by state")
-        console.log("7.View by city\n8.view by state\n9.Exit")
+        console.log("7.View by city\n8.view by state\n9.Count by city \n10.Count by state \n11.Exit")
         choice = prompt("Enter Your Choice:  ")
         choice = parseInt(choice)
         if(choice == 1){
@@ -242,6 +242,16 @@ function operations(){
         if(choice == 8){
             let state = prompt("Enter state name : ")
             viewByState(state)
+        }
+        if(choice == 9){
+            let city = prompt("Enter city name : ")
+            var cityCount = addressBookArray.filter(contact => contact.city == city).reduce(count,0);
+            console.log(cityCount);
+        }
+        if(choice == 10){
+            let state = prompt("Enter city name : ")
+            var stateCount = addressBookArray.filter(contact => contact.state == state).reduce(count,0);
+            console.log(stateCount);
         }
     }
 }
