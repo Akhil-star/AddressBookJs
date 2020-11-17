@@ -154,10 +154,14 @@ function deleteContact(firstname1, lastname1){
     }
 }
 
+function count(num){
+    return num + 1;
+}
+
 function operations(){
     let choice = 1;
-    while(choice != 4){
-        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Exit")
+    while(choice != 5){
+        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Exit")
         choice = prompt("Enter Your Choice:  ")
         choice = parseInt(choice)
         if(choice == 1){
@@ -173,6 +177,9 @@ function operations(){
             let firstname1 = prompt("Enter the First Name : ")
             let lastName1 = prompt("Enter the Last Name :  ")
             deleteContact(firstname1, lastName1)
+        }
+        if(choice == 4){
+            console.log("Total Number of Contacts: " + addressBookArray.reduce(count,0))
         }
     }
 }
