@@ -77,7 +77,7 @@ class Contact{
 }
 
 let contact = new Contact("Akhil", "Kumar", "RKColony", "Mahabubnagr", "Telangana", "512541", "91 9876543210", "akhil@gmail.com")
-let contact1 = new Contact("Nikhil", "Kumar", "BNReddy", "Trichy", "TamilNadu", "525151", "91 8523697410", "nikhil@gmail.com")
+let contact1 = new Contact("Nikhil", "Maya", "BNReddy", "Trichy", "TamilNadu", "525151", "91 8523697410", "nikhil@gmail.com")
 let contact2 = new Contact("Raju", "Singh", "Balajinagar", "Karminagar", "Telangana", "596321", "91 9632581470", "raj@gmail.com")
 
 var addressBookArray = new Array()
@@ -114,28 +114,28 @@ function editContact(firstname, lastname){
                     contactToEdit.lastName = lastname
                     break
                 case 3:
-                    let address_edit = prompt("Enter the address: ")
-                    contactToEdit.address = address_edit
+                    let address = prompt("Enter the address: ")
+                    contactToEdit.address = address
                     break
                 case 4:
-                    let city_edit = prompt("Enter the city: ")
-                    contactToEdit.city = city_edit
+                    let city = prompt("Enter the city: ")
+                    contactToEdit.city = city
                     break
                 case 5:
-                    let state_edit = prompt("Enter the State: ")
-                    contactToEdit.state = state_edit
+                    let state = prompt("Enter the State: ")
+                    contactToEdit.state = state
                     break
                 case 6:
-                    let zip_edit = prompt("Enter the zip: ")
-                    contactToEdit.zip = zip_edit
+                    let zip = prompt("Enter the zip: ")
+                    contactToEdit.zip = zip
                     break
                 case 7:
-                    let phone_edit = prompt("Enter the phone number: ")
-                    contactToEdit.phoneNo = phone_edit
+                    let phone = prompt("Enter the phone number: ")
+                    contactToEdit.phoneNo = phone
                     break
                 case 8:
-                    let mail_edit = prompt("Enter the email: ")
-                    contactToEdit.email = mail_edit
+                    let mail = prompt("Enter the emailId: ")
+                    contactToEdit.emailId = mail
                     break
                 case 9:
                     break
@@ -146,11 +146,38 @@ function editContact(firstname, lastname){
     }
 }
 
-const prompt = require('prompt-sync')();
-let firstname = prompt("Enter the First Name:  ")
-let lastname = prompt("Enter the Last Name:  ")
-editContact(firstname, lastname)
-for(let i = 0; i < addressBookArray.length; i++){
-    console.log(addressBookArray[i].toString())
+function deleteContact(firstname1, lastname1){
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === firstname1 && addressBookArray[i].lastName === lastname1)
+            addressBookArray.splice(i,1)
+            console.log("Deleted Successfully")
+    }
 }
+
+function operations(){
+    let choice = 1;
+    while(choice != 4){
+        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Exit")
+        choice = prompt("Enter Your Choice:  ")
+        choice = parseInt(choice)
+        if(choice == 1){
+            console.log(addressBookArray.toString())
+        }
+        if(choice == 2){
+            let firstname = prompt("Enter the First Name:  ")
+            let lastname = prompt("Enter the Last Name:  ")
+            editContact(firstname, lastname)
+        }
+        if(choice == 3){
+            console.log("Delete Contact ")
+            let firstname1 = prompt("Enter the First Name : ")
+            let lastName1 = prompt("Enter the Last Name :  ")
+            deleteContact(firstname1, lastName1)
+        }
+    }
+}
+
+const prompt = require('prompt-sync')();
+operations();
+
 
