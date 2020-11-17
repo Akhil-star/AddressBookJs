@@ -203,9 +203,10 @@ function viewByState(state){
 
 function operations(){
     let choice = 1;
-    while(choice != 12){
+    while(choice != 15){
         console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Search by city\n6.Search by state")
-        console.log("7.View by city\n8.view by state\n9.Count by city \n10.Count by state \n11.Sort\n12.Exit")
+        console.log("7.View by city\n8.view by state\n9.Count by city \n10.Count by state \n11.Sort by name")
+        console.log("12.Sort by city\n13.Sort by state\n14.Sort by zip\n15.Exit")
         choice = prompt("Enter Your Choice:  ")
         choice = parseInt(choice)
         if(choice == 1){
@@ -256,6 +257,15 @@ function operations(){
         if(choice == 11){
             addressBookArray.sort();
             console.log(addressBookArray.toString())
+        }
+        if(choice == 12){
+            console.log(addressBookArray.sort(function(contact1, contact2) { return contact1.city.localeCompare(contact2.city)}))
+        }
+        if(choice == 13){
+            console.log(addressBookArray.sort(function(contact1, contact2) { return contact1.state.localeCompare(contact2.state)}))
+        }
+        if(choice == 14){
+            console.log(addressBookArray.sort(function(contact1, contact2) { return contact1.zip.localeCompare(contact2.zip)}))
         }
     }
 }
