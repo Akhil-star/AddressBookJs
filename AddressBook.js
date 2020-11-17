@@ -1,6 +1,7 @@
 class Contact{
+
     constructor(...params){        
-        this.firstName = params[0]        
+        this.firstName = params[0];        
         this.lastName = params[1];        
         this.address = params[2];
         this.city = params[3];
@@ -10,7 +11,7 @@ class Contact{
         this.emailId = params[7];
     }
 
-    get getfirstName(){ return this._firstName}
+    get firstName(){ return this._firstName}
     set firstName(firstName){
         let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$')
         if(nameRegex.test(firstName))
@@ -47,11 +48,8 @@ class Contact{
     }
     get zip(){ return this._zip}
     set zip(zip){
-        let letterRegex = RegExp('^[^a-zA-z]+$')
-        let splRegex = RegExp('^[!@#$^&%*()+=-[]\/{}|:<>?,.]+$')
-        let pinRegex = RegExp('^[0-9]{3}[\\s]{0,1}[0-9]{3}$')
-        if(letterRegex.test(zip) && !splRegex.test(zip) && pinRegex.test(zip)){
-            zip = parseInt(zip.replace(" ",""))
+        let regex = RegExp('^[0-9]{3}[\\s]{0,1}[0-9]{3}$')
+        if(regex.test(zip)){
             this._zip = zip
         }
         else throw "Invalid Zip"
@@ -70,7 +68,24 @@ class Contact{
             this._emailId = emailId
         else throw "Invalid EmailId"
     }
+
+
+    toString(){
+        return "FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
+            " State: " + this.state + " Zip: " + this.zip + " PhoneNumber: " + this.phoneNo + " Email: " + this.emailId;
+  }
 }
 
 let contact = new Contact("Akhil", "Kumar", "RKColony", "Mahabubnagr", "Telangana", "512541", "91 9876543210", "akhil@gmail.com")
-console.log(contact)
+let contact1 = new Contact("Nikhil", "Kumar", "BNReddy", "Trichy", "TamilNadu", "525151", "91 8523697410", "nikhil@gmail.com")
+let contact2 = new Contact("Raju", "Singh", "Balajinagar", "Karminagar", "Telangana", "596321", "91 9632581470", "raj@gmail.com")
+
+var addressBookArray = new Array()
+addressBookArray.push(contact)
+addressBookArray.push(contact1)
+addressBookArray.push(contact2)    
+
+for(let i = 0; i < addressBookArray.length; i++){
+    console.log(addressBookArray[i].toString())
+}
+
