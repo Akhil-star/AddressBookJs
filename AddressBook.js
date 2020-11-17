@@ -89,3 +89,68 @@ for(let i = 0; i < addressBookArray.length; i++){
     console.log(addressBookArray[i].toString())
 }
 
+function editContact(firstname, lastname){
+    let contactToEdit;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === firstname && addressBookArray[i].lastName === lastname)
+            contactToEdit = addressBookArray[i]
+    }
+
+    if(contactToEdit == null)
+        console.log("No Contact Found")
+    else{
+        let choice = 1;
+        while(choice != 9){
+            console.log("1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State \n6. Edit ZipCode \n7. Edit Phone Number \n8. Edit EmailId \n9. Exit")
+            choice = prompt("Enter Your Choice:  ")
+            choice = parseInt(choice)
+            switch (choice) {
+                case 1:
+                    let firstname = prompt("Enter the first Name: ")
+                    contactToEdit.firstName = firstname
+                    break
+                case 2:
+                    let lastname = prompt("Enter the last Name: ")
+                    contactToEdit.lastName = lastname
+                    break
+                case 3:
+                    let address_edit = prompt("Enter the address: ")
+                    contactToEdit.address = address_edit
+                    break
+                case 4:
+                    let city_edit = prompt("Enter the city: ")
+                    contactToEdit.city = city_edit
+                    break
+                case 5:
+                    let state_edit = prompt("Enter the State: ")
+                    contactToEdit.state = state_edit
+                    break
+                case 6:
+                    let zip_edit = prompt("Enter the zip: ")
+                    contactToEdit.zip = zip_edit
+                    break
+                case 7:
+                    let phone_edit = prompt("Enter the phone number: ")
+                    contactToEdit.phoneNo = phone_edit
+                    break
+                case 8:
+                    let mail_edit = prompt("Enter the email: ")
+                    contactToEdit.email = mail_edit
+                    break
+                case 9:
+                    break
+                default:
+                    console.log("Wrong choice")
+            }
+        }
+    }
+}
+
+const prompt = require('prompt-sync')();
+let firstname = prompt("Enter the First Name:  ")
+let lastname = prompt("Enter the Last Name:  ")
+editContact(firstname, lastname)
+for(let i = 0; i < addressBookArray.length; i++){
+    console.log(addressBookArray[i].toString())
+}
+
