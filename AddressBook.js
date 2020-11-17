@@ -193,10 +193,19 @@ function searchContactByState(firstName,state){
     }else {console.log(stateSearch.toString());}
 }
 
+function viewByCity(city){
+    addressBookArray.filter(contact => contact.city == city).forEach(contact => console.log(contact.toString()))
+}
+
+function viewByState(state){
+    addressBookArray.filter(contact => contact.state == state).forEach(contact => console.log(contact.toString()))
+}
+
 function operations(){
     let choice = 1;
-    while(choice != 7){
-        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Search by city\n6.Search by state\n7.exit")
+    while(choice != 9){
+        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Search by city\n6.Search by state")
+        console.log("7.View by city\n8.view by state\n9.Exit")
         choice = prompt("Enter Your Choice:  ")
         choice = parseInt(choice)
         if(choice == 1){
@@ -225,6 +234,14 @@ function operations(){
             let state = prompt("Enter state name : ")
             let firstname = prompt("Enter the First Name : ")
             searchContactByState(firstname,state)
+        }
+        if(choice == 7){
+            let city = prompt("Enter city name : ")
+            viewByCity(city);
+        }
+        if(choice == 8){
+            let state = prompt("Enter state name : ")
+            viewByState(state)
         }
     }
 }
