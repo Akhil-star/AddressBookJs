@@ -79,11 +79,32 @@ class Contact{
 let contact = new Contact("Akhil", "Kumar", "RKColony", "Mahabubnagr", "Telangana", "512541", "91 9876543210", "akhil@gmail.com")
 let contact1 = new Contact("Nikhil", "Maya", "BNReddy", "Trichy", "TamilNadu", "525151", "91 8523697410", "nikhil@gmail.com")
 let contact2 = new Contact("Raju", "Singh", "Balajinagar", "Karminagar", "Telangana", "596321", "91 9632581470", "raj@gmail.com")
+let contact3 = new Contact("Raju", "Singh", "Balajinagar", "Karminagar", "Telangana", "596321", "91 9632581470", "raj@gmail.com")
 
 var addressBookArray = new Array()
-addressBookArray.push(contact)
-addressBookArray.push(contact1)
-addressBookArray.push(contact2)    
+
+function findContact(fname, lname){
+    let contact;
+    for(let i = 0; i < addressBookArray.length; i++){
+        if(addressBookArray[i].firstName === fname && addressBookArray[i].lastName === lname)
+            contact = addressBookArray[i]
+    }
+    return contact;
+}
+
+function addContactToArray(contact){
+    let duplicateContact = findContact(contact.firstName, contact.lastName)
+    if(duplicateContact != null)
+        console.log("Dupicate Contact Found.")
+    else
+        addressBookArray.push(contact)
+}
+
+addContactToArray(contact)
+addContactToArray(contact1)
+addContactToArray(contact2)
+addContactToArray(contact3)
+
 
 for(let i = 0; i < addressBookArray.length; i++){
     console.log(addressBookArray[i].toString())
