@@ -179,10 +179,24 @@ function count(num){
     return num + 1;
 }
 
+function searchContactByCity(firstName,city){
+    let citySearch = addressBookArray.find(contact => contact.firstName == firstName && contact.city == city);
+    if (citySearch == undefined){
+            console.log(firstName + " does not exist");
+    }else {console.log(citySearch.toString());}
+}
+
+function searchContactByState(firstName,state){
+    let stateSearch = addressBookArray.find(contact => contact.firstName == firstName && contact.state == state);
+    if (stateSearch == undefined){
+            console.log(firstName + " does not exists");
+    }else {console.log(stateSearch.toString());}
+}
+
 function operations(){
     let choice = 1;
-    while(choice != 5){
-        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Exit")
+    while(choice != 7){
+        console.log("1.View Contact\n2. Edit Contact \n3. Delete Contact\n4.Count\n5.Search by city\n6.Search by state\n7.exit")
         choice = prompt("Enter Your Choice:  ")
         choice = parseInt(choice)
         if(choice == 1){
@@ -201,6 +215,16 @@ function operations(){
         }
         if(choice == 4){
             console.log("Total Number of Contacts: " + addressBookArray.reduce(count,0))
+        }
+        if(choice == 5){
+            let city = prompt("Enter city name : ")
+            let firstname = prompt("Enter the First Name : ")
+            searchContactByCity(firstname,city)
+        }
+        if(choice == 6){
+            let state = prompt("Enter state name : ")
+            let firstname = prompt("Enter the First Name : ")
+            searchContactByState(firstname,state)
         }
     }
 }
